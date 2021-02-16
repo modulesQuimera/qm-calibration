@@ -1,0 +1,94 @@
+<script type="text/javascript">
+	RED.nodes.registerType('calibration',{
+		category: 'Processing Module',
+		color: '#ff0028',
+		defaults: {
+            nominal_voltage: { value: 127 },
+            minimum_voltage: { value: 20 },
+            nominal_current: { value: 20 },
+            minimum_current: { value: 7 },
+            energy_accum_time : { value: 300 },
+            calibration_power_factor: { value: "0.5" },
+
+			name:{value:""}
+		},
+		inputs:1,
+		outputs:1,
+		icon: "CPU.svg",
+		label: function() {
+			return this.name? "Calibration - " + this.name: "Calibration";
+		},
+		oneditprepare: function() { 
+			var node = this;
+			var scope = node.scope || [];
+
+		}
+	});	
+</script>
+
+<style>
+	label{ width: 100% !important; margin-bottom: 2px !important; }
+	.columm{ display: flex !important; flex-direction: column !important; }
+	hr { width: 40% !important; float: left !important; }
+	.hr-div-compare{ display: flex !important; justify-content: space-between !important; }
+	.optional{ height: max-content !important; margin-top: 10px !important; }
+	.descript{ text-align: center; }
+	.columm-50{ display: flex !important; flex-direction: column !important; width: 50% !important; float: left !important; }
+    .columm-30{ display: flex !important; flex-direction: column !important; width: 30% !important; float: left !important; }
+    .columm-70{ display: flex !important; flex-direction: column !important; width: 70% !important; float: left !important; }
+    hr { width: 40% !important; float: left !important; }
+    .hr-div-get{ display: flex !important; justify-content: space-between !important; margin-top: 250px !important; }
+    .optional{ height: max-content !important; margin-top: 10px !important; }
+    .descript{ text-align: center; }
+    .descript-div{ max-width: 444px !important; }
+    span.red-ui-typedInput-type-label { width: 250px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .btn-aln{ display: flex !important; flex-direction: row-reverse !important; align-content: center; align-items: flex-end; }
+    .box { position: relative; float: left; width: 100%; display: flex; align-items: center; }
+</style>
+
+<script type="text/html" data-template-name="calibration">
+	<div class="form-row columm descript-div">
+		<strong class="descript">
+			Macrobloco responsável por parametrizar o procedimento de calibração.
+		</strong>
+	</div>
+
+	<div style=" position: relative; display:flex;">
+        <div class="form-row columm-70">
+            <label style="width: 50% !important;" for="node-input-name" ><i class="fa fa-tag"></i> Identification Note</label>
+            <input type="text" id="node-input-name" placeholder="Name" style="width: 100%">
+        </div>
+	</div>
+	<div class="hr-div-compare">
+		<hr>Calibration<hr>
+    </div>
+    <div class='form-row columm-70'>
+        <label for='node-input-nominal_voltage'><i class='fa fa-envelope'></i> Nominal voltage</label>
+        <input type='number' id='node-input-nominal_voltage' placeholder='Variable' style='width:100%;'>
+    </div>
+    <div class='form-row columm-70'>
+        <label for='node-input-minimum_voltage'><i class='fa fa-envelope'></i> Minimum voltage</label>
+        <input type='number' id='node-input-minimum_voltage' placeholder='Variable' style='width:100%;'>
+    </div>
+    <div class='form-row columm-70'>
+        <label for='node-input-nominal_current'><i class='fa fa-envelope'></i> Nominal current</label>
+        <input type='number' id='node-input-nominal_current' placeholder='Variable' style='width:100%;'>
+    </div>
+    <div class='form-row columm-70'>
+        <label for='node-input-minimum_current'><i class='fa fa-envelope'></i> Minimum current</label>
+        <input type='number' id='node-input-minimum_current' placeholder='Variable' style='width:100%;'>
+    </div>
+    <div class='form-row columm-70'>
+        <label for='node-input-energy_accum_time'><i class='fa fa-envelope'></i> Energy accum time</label>
+        <input type='number' id='node-input-energy_accum_time' placeholder='Variable' style='width:100%;'>
+    </div>
+    <div class='form-row columm-70'>
+        <label for='node-input-calibration_powe_factor'><i class='fa fa-envelope'></i> Calibration power factor</label>
+        <input type='text' id='node-input-calibration_power_factor' placeholder='Variable' style='width:100%;'>
+    </div>
+
+</script>
+
+<script type="text/html" data-help-name="calibration">
+  	<p>Makes the rest of the comparisons adjacent to the “get command message”.</p>
+</script>
